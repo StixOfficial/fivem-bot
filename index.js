@@ -20,9 +20,7 @@ client.once(Events.ClientReady, () => {
 
 app.post("/server-up", async (req, res) => {
   try {
-    if (!isReady) {
-      return res.status(503).json({ error: "Bot not ready yet" })
-    }
+    if (!isReady) return res.status(503).json({ error: "Bot not ready" })
 
     const channel = await client.channels.fetch(CHANNEL_ID)
 
@@ -38,13 +36,14 @@ https://cfx.re/join/xj6d8r`
 
     res.json({ success: true })
   } catch (err) {
-    console.error("Send failed:", err)
-    res.status(500).json({ error: "Failed to send message" })
+    console.error(err)
+    res.status(500).json({ error: "Send failed" })
   }
 })
 
 client.login(TOKEN)
 
-app.listen(3000, () => {
-  console.log("HTTP server running on port 3000")
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log("HTTP server running on port " + PORT)
 })
