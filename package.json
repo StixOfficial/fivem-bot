@@ -1,0 +1,13 @@
+{
+  "name": "fivem-status-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.2",
+    "express": "^4.19.2"
+  }
+}
